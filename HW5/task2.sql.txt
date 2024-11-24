@@ -1,0 +1,34 @@
+1. How much money has the restaurant taken? Change the name of the output column to 'Income'.
+
+SELECT SUM(Bills.Total) AS Income
+FROM Bills;
+
+2. How much money did the restaurant take in February 2016? Change the name of the output column to 'Feb Income'.
+
+SELECT SUM(Bills.Total) AS `Feb Income`
+FROM Bills
+WHERE Bills.Date BETWEEN '2016-02-01' AND '2016-02-29';
+
+3. Calculate the average bill in table 2.
+
+SELECT AVG(Bills.Total) AS AvgBill
+FROM Bills
+WHERE Bills.TableID = 2;
+
+4. Calculate the minimal, maximal, and average amount of seats of tables in the Blue room. Name the corresponding columns as Min, Max, Avg.
+
+SELECT 
+    MIN(Tables.Seats) AS Min, 
+    MAX(Tables.Seats) AS Max, 
+    AVG(Tables.Seats) AS Avg
+FROM Tables
+WHERE Tables.Room = 'Blue';
+
+5. Count how many distinct tables are served by waiters 004 and 002.
+
+SELECT COUNT(DISTINCT Bills.TableID) AS DistinctTablesServed
+FROM Bills
+WHERE Bills.WaiterID IN ('004', '002');
+
+
+ChatGPT can make mistakes. Check important info.
